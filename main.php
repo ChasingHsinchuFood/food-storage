@@ -19,3 +19,5 @@ print_r($foodInfo->foodInfo()->create([
     'shop_name' => $shopName,
     'static_map_image' => $mapImage,
 ]));
+
+$storage->closeStream();

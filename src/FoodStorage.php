@@ -13,7 +13,9 @@ class FoodStorage extends Eloquent
     * @var array
     */
 
-    protected $fillable = ['name', 'email', 'password','userimage'];
+    protected $fillable = [];
+
+    private $resource;
 
     /**
     * The attributes that should be hidden for arrays.
@@ -43,9 +45,10 @@ class FoodStorage extends Eloquent
     {
         Capsule::schema()->create('shop_info', function ($table) {
             $table->increments('id');
+            $table->primary('address');
             $table->string('address');
             $table->string('phone_number');
-            $table->double('rate');
+            $table->double('rate', 8, 2);
             $table->string('shop_name');
             $table->string('static_map_image');
         });
@@ -62,6 +65,16 @@ class FoodStorage extends Eloquent
             throw new \InvalidArgumentException('The '.$filePath.' file is not found');
         }
 
-        return ($contentType == 'stream') ? fopen($filePath, 'r') : file_get_contents($filePath);
+        return $this->resource = ($contentType == 'stream') ? fopen($filePath, 'r') : file_get_contents($filePath);
+    }
+
+    /*
+    * Get the csv contents
+    *
+    */
+
+    public function closeStream()
+    {
+        fclose($this->resource);
     }
 }
