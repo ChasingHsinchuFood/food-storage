@@ -52,8 +52,7 @@ while(!feof($resource)) {
     $shopName = isset($string[3]) ? $string[3] : '';
     $mapImage = isset($string[4]) ? $string[4] : '';
 
-    if($address == '' && $phoneNumber == '' && $rate == ''
-            && $shopName == '' && $mapImage == '') {
+    if($address == '') {
         continue;
     }
 
