@@ -11,6 +11,7 @@ require_once 'vendor/autoload.php';
 use Food\Storage\FoodStorage;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Dotenv\Dotenv;
+use Food\Storage\FoodInfo;
 
 $dotenv = new Dotenv(__DIR__);
 $dotenv->load();
