@@ -46,6 +46,10 @@ fgets($resource, 4096);
 
 while(!feof($resource)) {
     $string = explode(',', fgets($resource, 4096));
+    foreach($string as $key => $str) {
+        $string[$key] = trim($str);
+    }
+
     $address = isset($string[0]) ? $string[0] : '';
     $phoneNumber = isset($string[1]) ? $string[1] : '';
     $rate = isset($string[2]) ? $string[2] : '';
