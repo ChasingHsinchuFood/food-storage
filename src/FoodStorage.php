@@ -15,6 +15,14 @@ class FoodStorage extends Eloquent
 
     protected $fillable = [];
 
+    /**
+    * Set the timestamps is false avoid adding updating time.
+    *
+    * @var boolean
+    */
+
+    public $timestamps = false;
+
     private $resource;
 
     /**
@@ -51,16 +59,6 @@ class FoodStorage extends Eloquent
             $table->string('shop_name');
             $table->string('static_map_image');
         });
-    }
-
-    /*
-    * Get the csv contents
-    *
-    */
-
-    public function setUpdatedAt($value)
-    {
-        $this->{static::UPDATED_AT} = $value;
     }
 
     /*
