@@ -13,7 +13,7 @@ class FoodStorage extends Eloquent
     * @var array
     */
 
-    protected $fillable = [];
+    protected $fillable = ['address', 'phone_number', 'rate', 'shop_name', 'static_map_image'];
 
     /**
     * Set the timestamps is false avoid adding updating time.
@@ -34,24 +34,13 @@ class FoodStorage extends Eloquent
     protected $hidden = [];
 
     /*
-    * Get FoodInfo of food information
-    *
-    */
-
-    public function foodInfo()
-    {
-        return $this->hasMany('Food\Storage\FoodInfo');
-
-    }
-
-    /*
     * Create the shop_info table schema
     *
     */
 
     public function createSchema(Capsule $capsule)
     {
-        $capsule::schema()->create('food_infos', function ($table) {
+        $capsule::schema()->create('food_storages', function ($table) {
             $table->primary('address');
             $table->string('address');
             $table->string('phone_number');
