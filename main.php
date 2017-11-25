@@ -52,13 +52,16 @@ while(!feof($resource)) {
     $shopName = $string[3];
     $mapImage = $string[4];
 
-    var_dump($storage->create([
+    $storage::create([
         'address' => $address,
         'phone_number' => $phoneNumber,
         'rate' => $rate,
         'shop_name' => $shopName,
         'static_map_image' => $mapImage,
-    ]));
+    ]);
 }
 
 $storage->closeStream();
+
+// Getall records of specific table
+$storage::all()->toArray();
