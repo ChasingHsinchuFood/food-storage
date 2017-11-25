@@ -46,13 +46,14 @@ fgets($resource, 4096);
 
 while(!feof($resource)) {
     $string = explode(',', fgets($resource, 4096));
-    $address = isset($string[0]) ? $string[0] : false;
-    $phoneNumber = isset($string[1]) ? $string[1] : false;
-    $rate = isset($string[2]) ? $string[2] : false;
-    $shopName = isset($string[3]) ? $string[3] : false;
-    $mapImage = isset($string[4]) ? $string[4] : false;
+    $address = isset($string[0]) ? $string[0] : '';
+    $phoneNumber = isset($string[1]) ? $string[1] : '';
+    $rate = isset($string[2]) ? $string[2] : '';
+    $shopName = isset($string[3]) ? $string[3] : '';
+    $mapImage = isset($string[4]) ? $string[4] : '';
 
-    if(!$address && !$phoneNumber && !$rate && !$shopName && !$mapImage) {
+    if($address == '' && $phoneNumber == '' && $rate == ''
+            && $shopName == '' && $mapImage == '') {
         continue;
     }
 
