@@ -12,7 +12,7 @@ $foodInfo = $storage::Create([]);
 
 $resource = $storage->getCsvContent('stream', './db.shop.csv');
 
-print_r($foodInfo->foodInfo()->create([
+var_dump($foodInfo->foodInfo()->create([
     'address' => $address,
     'phone_number' => $phoneNumber,
     'rate' => $rate,
