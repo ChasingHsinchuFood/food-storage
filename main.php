@@ -46,11 +46,15 @@ fgets($resource, 4096);
 
 while(!feof($resource)) {
     $string = explode(',', fgets($resource, 4096));
-    $address = $string[0];
-    $phoneNumber = $string[1];
-    $rate = $string[2];
-    $shopName = $string[3];
-    $mapImage = $string[4];
+    $address = isset($string[0]) ? $string[0] : false;
+    $phoneNumber = isset($string[1]) ? $string[1] : false;
+    $rate = isset($string[2]) ? $string[2] : false;
+    $shopName = isset($string[3]) ? $string[3] : false;
+    $mapImage = isset($string[4]) ? $string[4] : false;
+
+    if(!$address && !$phoneNumber && !$rate && !$shopName && !$mapImage) {
+        continue;
+    }
 
     $storage::create([
         'address' => $address,
