@@ -21,7 +21,7 @@ $capsule->addConnection([
     'host' => getenv('host'),
     'database' => getenv('database'),
     'username' => getenv('username'),
-    'password' => getenv('mysql'),
+    'password' => getenv('password'),
 ]);
 
 $capsule->setAsGlobal();
