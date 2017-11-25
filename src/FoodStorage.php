@@ -4,7 +4,6 @@ namespace Food\Storage;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Illuminate\Database\Capsule\Manager as Capsule;
-use Illuminate\Support\Facades\Schema;
 
 class FoodStorage extends Eloquent
 {
@@ -44,16 +43,14 @@ class FoodStorage extends Eloquent
 
     public function createSchema(Capsule $capsule)
     {
-        if(Schema::hasTable('food_storages') == false) {
-            $capsule::schema()->create('food_storages', function ($table) {
-                $table->primary('address');
-                $table->string('address');
-                $table->string('phone_number');
-                $table->double('rate', 8, 2);
-                $table->string('shop_name');
-                $table->string('static_map_image');
-            });
-        }
+        $capsule::schema()->create('food_storages', function ($table) {
+            $table->primary('address');
+            $table->string('address');
+            $table->string('phone_number');
+            $table->double('rate', 8, 2);
+            $table->string('shop_name');
+            $table->string('static_map_image');
+        });
     }
 
     /*
