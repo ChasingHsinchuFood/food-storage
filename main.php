@@ -6,7 +6,7 @@ use Food\Storage\FoodStorage;
 
 $storage = new FoodStorage();
 
-$storage->createSchema();
+$storage->createSchema($capsule);
 
 $foodInfo = $storage::Create([]);
 

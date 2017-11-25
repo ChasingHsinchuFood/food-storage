@@ -41,9 +41,9 @@ class FoodStorage extends Eloquent
     *
     */
 
-    public function createSchema()
+    public function createSchema(Capsule $capsule)
     {
-        Capsule::schema()->create('shop_info', function ($table) {
+        $capsule::schema()->create('shop_info', function ($table) {
             $table->increments('id');
             $table->primary('address');
             $table->string('address');
