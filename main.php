@@ -35,6 +35,7 @@ $capsule->bootEloquent();
 
 $storage = new FoodStorage();
 
+// it should check the table whether it's existed before calling the createSchema method
 $storage->createSchema($capsule);
 
 $storage::Create([]);
