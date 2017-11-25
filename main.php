@@ -16,6 +16,9 @@ use Food\Storage\FoodInfo;
 $dotenv = new Dotenv(__DIR__);
 $dotenv->load();
 
+$dotenv = new Dotenv(__DIR__);
+$dotenv->load();
+
 $capsule = new Capsule();
 
 $capsule->addConnection([
