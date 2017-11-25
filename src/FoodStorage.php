@@ -58,6 +58,16 @@ class FoodStorage extends Eloquent
     *
     */
 
+    public function setUpdatedAt($value)
+    {
+        $this->{static::UPDATED_AT} = $value;
+    }
+
+    /*
+    * Get the csv contents
+    *
+    */
+
     public function getCsvContent(string $contentType, string $filePath)
     {
         if(file_exists($filePath) == false) {
