@@ -40,6 +40,7 @@ $foodInfo = $storage::Create([]);
 
 $resource = $storage->getCsvContent('stream', '../food-crawler/db.shop.csv');
 
+fgets($resource, 4096);
 while(!feof($resource)) {
     $string = explode(',', fgets($resource, 4096));
     $address = $string[0];

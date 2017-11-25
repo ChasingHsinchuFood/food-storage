@@ -40,7 +40,7 @@ class FoodStorage extends Eloquent
 
     public function foodInfo()
     {
-        return $this->hasMany('Food\Storage\FoodInfo');
+        return $this->hasMany('Food\Storage\AddFoodInfo');
 
     }
 
