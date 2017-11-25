@@ -37,7 +37,7 @@ $storage = new FoodStorage();
 
 $storage->createSchema($capsule);
 
-$foodInfo = $storage::Create([]);
+$storage::Create([]);
 
 $resource = $storage->getCsvContent('stream', '../food-crawler/db.shop.csv');
 
@@ -52,7 +52,7 @@ while(!feof($resource)) {
     $shopName = $string[3];
     $mapImage = $string[4];
 
-    var_dump($foodInfo->foodInfo()->create([
+    var_dump($storage->create([
         'address' => $address,
         'phone_number' => $phoneNumber,
         'rate' => $rate,
