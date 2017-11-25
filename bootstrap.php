@@ -22,6 +22,9 @@ $capsule->addConnection([
     'database' => getenv('database'),
     'username' => getenv('username'),
     'password' => getenv('password'),
+    'charset' => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix' => '',
 ]);
 
 $capsule->setAsGlobal();
