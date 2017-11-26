@@ -9,12 +9,10 @@
 require_once 'vendor/autoload.php';
 
 use Food\Storage\FoodStorage;
+use Food\Storage\FoodSouvenir;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Dotenv\Dotenv;
 use Food\Storage\FoodInfo;
-
-$dotenv = new Dotenv(__DIR__);
-$dotenv->load();
 
 $dotenv = new Dotenv(__DIR__);
 $dotenv->load();
@@ -37,6 +35,7 @@ $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 $storage = new FoodStorage();
+$souvenir = new FoodSouvenir();
 
 // it should check the table whether it's existed before calling the createSchema method
 $storage->createSchema($capsule);
@@ -77,3 +76,45 @@ $storage->closeStream();
 
 // Getall records of specific table
 $storage::all()->toArray();
+
+// it should check the table whether it's existed before calling the createSchema method
+$souvenir->createSchema($capsule);
+
+$souvenir::Create([]);
+
+$resource = $souvenir->getCsvContent('stream', './20161213191900678.csv');
+
+// ignore the CSV file header
+fgets($resource, 4096);
+
+while(!feof($resource)) {
+    $string = explode(',', fgets($resource, 4096));
+    foreach($string as $key => $str) {
+        $string[$key] = trim($str);
+    }
+
+    $no = isset($string[0]) ? $string[0] : '';
+    $productName = isset($string[1]) ? $string[1] : '';
+    $shopName = isset($string[2]) ? $string[2] : '';
+    $address = isset($string[3]) ? $string[3] : '';
+    $phoneNumber = isset($string[4]) ? $string[4] : '';
+    $shopWebsite = isset($string[5]) ? $string[5] : '';
+
+    if($address == '') {
+        continue;
+    }
+
+    $souvenir::create([
+        'no' => $no,
+        'product_name' => $productName,
+        'shop_name' => $shopName,
+        'address' => $address,
+        'phone_number' => $phoneNumber,
+        'shop_website' => $shopWebsite,
+    ]);
+}
+
+$souvenir->closeStream();
+
+// Getall records of specific table
+$souvenir::all()->toArray();
