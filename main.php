@@ -36,7 +36,7 @@ $capsule->bootEloquent();
 
 $storage = new FoodStorage();
 $souvenir = new FoodSouvenir();
-
+/*
 // it should check the table whether it's existed before calling the createSchema method
 $storage->createSchema($capsule);
 
@@ -76,6 +76,7 @@ $storage->closeStream();
 
 // Getall records of specific table
 $storage::all()->toArray();
+*/
 
 // it should check the table whether it's existed before calling the createSchema method
 $souvenir->createSchema($capsule);
